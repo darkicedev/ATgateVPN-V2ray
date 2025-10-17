@@ -58,7 +58,7 @@
         tools:targetApi="m">
 
         <activity
-            android:name=".ui.AtgateImportActivity"
+            android:name=".ui.AtgateActivity"
             android:exported="true"
             android:theme="@style/AppThemeDayNight.NoActionBar">
             <intent-filter>
@@ -67,10 +67,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.AtgateConnectActivity"
-            android:exported="false"
-            android:theme="@style/AppThemeDayNight.NoActionBar" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"

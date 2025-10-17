@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">v2rayNG</string>
-    <string name="app_widget_name">Switch</string>
-    <string name="app_tile_name">Switch</string>
+    <string name="app_name" translatable="false">ATGate VPN</string>
+    <string name="app_widget_name">ATGate VPN</string>
+    <string name="app_tile_name">ATGate VPN</string>
     <string name="app_tile_first_use">First use of this feature, please use the app to add server</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -28,6 +28,26 @@
     <string name="atgate_connect_error_no_profile">Сначала импортируйте VLESS-ссылку</string>
     <string name="atgate_connect_title">ATGate VPN</string>
     <string name="atgate_connect_subtitle">Ваше соединение защищено сервисом ATGate</string>
+    <string name="atgate_status_connected">Подключено</string>
+    <string name="atgate_status_ready">Готово к запуску</string>
+    <string name="atgate_status_disconnected">Не подключено</string>
+    <string name="atgate_tagline">Защитите интернет одним нажатием</string>
+    <string name="atgate_status_detail_connected">VPN активен, трафик шифруется</string>
+    <string name="atgate_status_detail_ready">Профиль загружен, можно подключиться</string>
+    <string name="atgate_status_detail_disconnected">Импортируйте ссылку ATGate, чтобы начать</string>
+    <string name="atgate_action_change_profile">Сменить профиль</string>
+    <string name="atgate_action_import">Импортировать профиль</string>
+    <string name="atgate_action_speedtest">Измерить пинг</string>
+    <string name="atgate_placeholder_latency">—</string>
+    <string name="atgate_placeholder_endpoint">укажите узел подключения</string>
+    <string name="atgate_label_profile">Профиль</string>
+    <string name="atgate_label_endpoint">Узел</string>
+    <string name="atgate_label_latency">Пинг</string>
+    <string name="atgate_label_duration">Сессия</string>
+    <string name="atgate_import_sheet_title">Импорт профиля ATGate</string>
+    <string name="atgate_import_sheet_subtitle">Вставьте VLESS-ссылку сервиса ATGate — мы сохраним её локально и подготовим к подключению</string>
+    <string name="atgate_speedtest_started">Запустили измерение пинга</string>
+    <string name="action_cancel">Отмена</string>
 
     <!-- Notifications -->
     <string name="notification_action_stop_v2ray">Stop</string>
