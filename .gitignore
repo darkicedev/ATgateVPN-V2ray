@@ -31,6 +31,15 @@ signing.properties
 # Ignore shared object files
 *.so
 
+# Keep required native libs in module
+!V2rayNG/app/libs/
+!V2rayNG/app/libs/**
+!V2rayNG/app/libs/**/*.so
+!V2rayNG/app/libs/**/*.aar
+!V2rayNG/app/src/main/lib/
+!V2rayNG/app/src/main/lib/**
+!V2rayNG/app/src/main/lib/**/*.so
+
 # Ignore Google services JSON
 V2rayNG/app/google-services.json
 

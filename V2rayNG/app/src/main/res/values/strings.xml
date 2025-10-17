@@ -10,6 +10,25 @@
     <string name="migration_fail">Data migration failed!</string>
     <string name="pull_down_to_refresh">Please pull down to refresh!</string>
 
+    <!-- ATGate -->
+    <string name="atgate_import_title">ATGate VPN</string>
+    <string name="atgate_import_description">Вставьте или отсканируйте VLESS-ссылку сервиса ATGate VPN</string>
+    <string name="atgate_import_placeholder">vless://...</string>
+    <string name="atgate_import_button">Импортировать</string>
+    <string name="atgate_import_error_empty">Пожалуйста, вставьте VLESS-ссылку</string>
+    <string name="atgate_import_error_invalid">Не удалось разобрать ссылку. Проверьте параметры</string>
+    <string name="atgate_import_error_unknown">Что-то пошло не так. Повторите попытку</string>
+    <string name="atgate_import_success">Профиль ATGate добавлен</string>
+    <string name="atgate_profile_default_name">ATGate VPN</string>
+    <string name="atgate_connect_button_connect">Подключиться</string>
+    <string name="atgate_connect_button_disconnect">Отключиться</string>
+    <string name="atgate_connect_status_ready">Готов к подключению</string>
+    <string name="atgate_connect_status_connected">Подключено</string>
+    <string name="atgate_connect_status_disconnected">Не подключено</string>
+    <string name="atgate_connect_error_no_profile">Сначала импортируйте VLESS-ссылку</string>
+    <string name="atgate_connect_title">ATGate VPN</string>
+    <string name="atgate_connect_subtitle">Ваше соединение защищено сервисом ATGate</string>
+
     <!-- Notifications -->
     <string name="notification_action_stop_v2ray">Stop</string>
     <string name="toast_permission_denied">Unable to obtain the permission</string>
