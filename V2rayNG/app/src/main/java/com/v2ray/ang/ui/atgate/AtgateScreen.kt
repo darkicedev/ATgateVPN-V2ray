@@ -74,6 +74,8 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.graphics.graphicsLayer
@@ -177,13 +179,13 @@ fun AtgateScreen(
 @Composable
 private fun rememberBackgroundGradient(): Brush {
     val primary = MaterialTheme.colorScheme.primary
-    val surface = MaterialTheme.colorScheme.surface
+    val primaryContainer = MaterialTheme.colorScheme.primaryContainer
     val background = MaterialTheme.colorScheme.background
-    val topGlow = primary.copy(alpha = 0.22f)
-    val midGlow = surface.copy(alpha = 0.92f)
+    val topGlow = primary.copy(alpha = 0.3f)
+    val midGlow = primaryContainer.copy(alpha = 0.5f)
     val colors = listOf(topGlow, midGlow, background)
     val screenHeight = LocalConfiguration.current.screenHeightDp.coerceAtLeast(720)
-    return remember(primary, surface, background, screenHeight) {
+    return remember(primary, primaryContainer, background, screenHeight) {
         Brush.verticalGradient(
             colors = colors,
             startY = 0f,
@@ -200,11 +202,12 @@ private fun TopHeader(
     val titleColor = MaterialTheme.colorScheme.onSurface
     val taglineColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.72f)
     val primaryColor = MaterialTheme.colorScheme.primary
-    val accentBrush = remember(primaryColor) {
+    val primaryContainer = MaterialTheme.colorScheme.primaryContainer
+    val accentBrush = remember(primaryColor, primaryContainer) {
         Brush.horizontalGradient(
             colors = listOf(
                 primaryColor.copy(alpha = 0.65f),
-                primaryColor.copy(alpha = 0.15f)
+                primaryContainer.copy(alpha = 0.25f)
             )
         )
     }
@@ -273,23 +276,28 @@ private fun StatusSummary(
             stringResource(id = R.string.atgate_status_detail_disconnected)
     }
     val shape = RoundedCornerShape(26.dp)
+    val primary = MaterialTheme.colorScheme.primary
+    val primaryContainer = MaterialTheme.colorScheme.primaryContainer
+    val secondary = MaterialTheme.colorScheme.secondary
+    val surfaceVariant = MaterialTheme.colorScheme.surfaceVariant
+    val outline = MaterialTheme.colorScheme.outline
     val (startColor, endColor, borderColor) = when (status) {
         ConnectionStatus.CONNECTED -> Triple(
-            MaterialTheme.colorScheme.primary.copy(alpha = 0.45f),
-            MaterialTheme.colorScheme.primary.copy(alpha = 0.1f),
-            MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
+            primary.copy(alpha = 0.7f),
+            primaryContainer.copy(alpha = 0.4f),
+            primary.copy(alpha = 0.55f)
         )
 
         ConnectionStatus.READY -> Triple(
-            MaterialTheme.colorScheme.secondary.copy(alpha = 0.35f),
-            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.25f),
-            MaterialTheme.colorScheme.secondary.copy(alpha = 0.55f)
+            secondary.copy(alpha = 0.4f),
+            primaryContainer.copy(alpha = 0.3f),
+            secondary.copy(alpha = 0.5f)
         )
 
         ConnectionStatus.IDLE -> Triple(
-            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.35f),
-            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.15f),
-            MaterialTheme.colorScheme.outline.copy(alpha = 0.4f)
+            surfaceVariant.copy(alpha = 0.35f),
+            surfaceVariant.copy(alpha = 0.18f),
+            outline.copy(alpha = 0.35f)
         )
     }
     val statusBrush = remember(status) {
@@ -357,20 +365,36 @@ private fun ConnectionOrb(
     )
     val primaryColor = MaterialTheme.colorScheme.primary
     val onPrimaryColor = MaterialTheme.colorScheme.onPrimary
-    val baseColors = if (isActive) {
-        listOf(
-            primaryColor.copy(alpha = 0.95f),
-            primaryColor,
-            primaryColor.copy(alpha = 0.8f)
-        )
+    val primaryContainer = MaterialTheme.colorScheme.primaryContainer
+    val isLightTheme = MaterialTheme.colorScheme.background.luminance() > 0.5f
+    val accentColor = MaterialTheme.colorScheme.secondary
+    val mixWithAccent = if (isLightTheme) {
+        if (isActive) 0.55f else 0.6f
     } else {
-        listOf(
-            primaryColor.copy(alpha = 0.7f),
-            primaryColor.copy(alpha = 0.9f),
-            primaryColor.copy(alpha = 0.7f)
-        )
+        if (isActive) 0.38f else 0.45f
     }
-    val glowStrokeColor = primaryColor.copy(alpha = glowAlpha)
+    val baseTone = lerp(primaryColor, accentColor, mixWithAccent)
+    val centerShade = lerp(
+        baseTone,
+        if (isLightTheme) Color.White else primaryContainer,
+        if (isLightTheme) {
+            if (isActive) 0.42f else 0.5f
+        } else {
+            if (isActive) 0.3f else 0.36f
+        }
+    )
+    val rimShade = lerp(
+        baseTone,
+        primaryColor,
+        if (isLightTheme) {
+            if (isActive) 0.18f else 0.28f
+        } else {
+            if (isActive) 0.42f else 0.5f
+        }
+    )
+    val baseColors = listOf(centerShade, baseTone, rimShade)
+    val glowBase = lerp(baseTone, accentColor, if (isLightTheme) 0.65f else 0.45f)
+    val glowStrokeColor = glowBase.copy(alpha = (glowAlpha * 0.55f) + if (isActive) 0.15f else 0.07f)
 
     Box(
         modifier = Modifier
@@ -629,14 +653,15 @@ private fun MetricCard(
 ) {
     val shape = RoundedCornerShape(22.dp)
     val primary = MaterialTheme.colorScheme.primary
+    val primaryContainer = MaterialTheme.colorScheme.primaryContainer
     val surfaceVariant = MaterialTheme.colorScheme.surfaceVariant
     val outline = MaterialTheme.colorScheme.outline
-    val backgroundBrush = remember(highlight, primary, surfaceVariant) {
+    val backgroundBrush = remember(highlight, primary, primaryContainer, surfaceVariant) {
         if (highlight) {
             Brush.linearGradient(
                 listOf(
-                    primary.copy(alpha = 0.35f),
-                    primary.copy(alpha = 0.08f)
+                    primary.copy(alpha = 0.55f),
+                    primaryContainer.copy(alpha = 0.5f)
                 )
             )
         } else {

@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPing">#45D3FF</color>
+    <color name="colorPing">#4EC8FF</color>
     <color name="colorPingRed">#FF6B8A</color>
-    <color name="colorConfigType">#3F9CFF</color>
+    <color name="colorConfigType">#4D88FF</color>
 
-    <color name="color_fab_active">#3AA8FF</color>
-    <color name="color_fab_inactive">#44536B</color>
-    <color name="color_secondary">#8EA4C4</color>
-    <color name="divider_color_light">#1F2D41</color>
+    <color name="color_fab_active">#3A7AFE</color>
+    <color name="color_fab_inactive">#A1B2D2</color>
+    <color name="color_secondary">#D3E3FF</color>
+    <color name="divider_color_light">#CBD8EE</color>
 
-    <color name="colorPrimary">#061324</color>
-    <color name="colorAccent">#8AD9FF</color>
+    <color name="colorPrimary">#3A7AFE</color>
+    <color name="colorAccent">#66C8FF</color>
+    <color name="colorBackground">#F2F7FF</color>
+    <color name="colorSurface">#F8FBFF</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSurface">#10223B</color>
 </resources>

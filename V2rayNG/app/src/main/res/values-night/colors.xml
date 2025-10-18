@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_fab_active">#f97910</color>
-    <color name="color_fab_inactive">#646464</color>
-    <color name="color_secondary">#BDBDBD</color>
-    <color name="divider_color_light">#424242</color>
+    <color name="color_fab_active">#4BC3FF</color>
+    <color name="color_fab_inactive">#55627A</color>
+    <color name="color_secondary">#2D3A53</color>
+    <color name="divider_color_light">#2A364B</color>
 
-    <color name="colorPrimary">#212121</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorPrimary">#0B1F3D</color>
+    <color name="colorAccent">#66C8FF</color>
+    <color name="colorBackground">#071427</color>
+    <color name="colorSurface">#142845</color>
+    <color name="colorOnPrimary">#F5FAFF</color>
+    <color name="colorOnSurface">#F5FAFF</color>
 </resources>

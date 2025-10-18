@@ -1,17 +1,18 @@
 <resources>
 
     <style name="AppThemeDayNight" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@color/colorPrimary</item>
-        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/colorBackground</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
         <item name="colorControlNormal">@color/colorAccent</item>
-        <item name="colorSurface">@color/colorPrimary</item>
-        <item name="colorOnSurface">@android:color/white</item>
-        <item name="colorOnPrimary">@android:color/white</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
     </style>
 
     <style name="AppThemeDayNight.NoActionBar" parent="AppThemeDayNight">
